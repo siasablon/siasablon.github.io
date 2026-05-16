@@ -45,9 +45,7 @@
   .project-card { background: white; border-radius: 4px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 2px 12px rgba(26,31,58,0.06); }
   .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(26,31,58,0.12); }
   .card-top { height: 180px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .card-top.rose { background: linear-gradient(135deg, #C4556A, #E88A9E); }
-  .card-top.navy { background: linear-gradient(135deg, #1A1F3A, #2D3561); }
-  .card-icon { font-size: 3rem; opacity: 0.9; }
+  .card-top img { width: 100%; height: 100%; object-fit: cover; }
   .card-tag { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.2); color: white; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 2px; backdrop-filter: blur(4px); }
   .card-body { padding: 1.8rem; }
   .card-org { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.5rem; }
@@ -62,7 +60,7 @@
   #visuels .section-label { color: var(--warm); }
   .gallery-intro { font-size: 0.95rem; line-height: 1.8; color: rgba(245,240,232,0.6); max-width: 560px; margin-bottom: 3rem; }
   .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .gallery-item { aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; position: relative; background: rgba(245,240,232,0.05); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245,240,232,0.1); transition: transform 0.3s; }
+  .gallery-item { aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; position: relative; background: rgba(245,240,232,0.05); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245,240,232,0.1); transition: transform 0.3s; cursor: pointer; }
   .gallery-item:hover { transform: scale(1.02); }
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
   .gallery-add-note { margin-top: 1.5rem; font-size: 0.8rem; color: rgba(245,240,232,0.35); font-style: italic; }
@@ -72,19 +70,23 @@
   .carousel-wrapper { position: relative; }
   .carousel-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; }
   .carousel-track::-webkit-scrollbar { display: none; }
-  .carousel-slide { flex: 0 0 calc(33.333% - 0.67rem); scroll-snap-align: start; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.1); display: flex; align-items: center; justify-content: center; }
+  .carousel-slide { flex: 0 0 calc(33.333% - 0.67rem); scroll-snap-align: start; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; }
   .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
   .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,240,232,0.1); border: 1px solid rgba(245,240,232,0.2); color: var(--cream); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; backdrop-filter: blur(4px); z-index: 2; }
   .carousel-btn:hover { background: rgba(245,240,232,0.25); }
   .carousel-btn.prev { left: -20px; }
   .carousel-btn.next { right: -20px; }
-  .card-carousel-slide { flex: 0 0 calc(50% - 0.5rem); scroll-snap-align: start; aspect-ratio: 16/9; border-radius: 3px; overflow: hidden; background: #e8e8e8; display: flex; align-items: center; justify-content: center; }
+  .card-carousel-slide { flex: 0 0 calc(50% - 0.5rem); scroll-snap-align: start; aspect-ratio: 16/9; border-radius: 3px; overflow: hidden; background: #e8e8e8; display: flex; align-items: center; justify-content: center; cursor: pointer; }
   .card-carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-  .ccs-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; width:100%; height:100%; color: #aaa; font-size: 0.7rem; gap: 0.3rem; }
-  .ccs-ph span { font-size: 1.4rem; }
   .card-carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26,31,58,0.12); border: 1px solid rgba(26,31,58,0.15); color: var(--navy); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; z-index: 2; }
   .card-carousel-btn.prev { left: -14px; }
   .card-carousel-btn.next { right: -14px; }
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+  .lightbox-close:hover { opacity: 1; }
   #profil { background: var(--cream); }
   .profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .profil-text p { font-size: 0.95rem; line-height: 1.9; color: var(--text); opacity: 0.8; margin-bottom: 1.2rem; }
@@ -137,6 +139,13 @@
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <nav>
   <div class="nav-logo">Sia Sablon</div>
   <ul class="nav-links">
@@ -147,6 +156,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
 <section class="hero" id="accueil">
   <div class="hero-left">
     <p class="hero-tag">Portfolio — Communication engagée</p>
@@ -169,12 +179,13 @@
     </div>
   </div>
 </section>
+
 <section id="projets">
   <p class="section-label">Expériences</p>
   <h2 class="section-title">Projets &<br>réalisations</h2>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="card-top rose"><span class="card-icon">🌹</span><span class="card-tag">En cours</span></div>
+      <div class="card-top"><img src="IMG_0376.png" alt="Café Rosa"></div>
       <div class="card-body">
         <p class="card-org">Café Rosa — Lyon</p>
         <h3 class="card-title">Communication digitale & éditoriale</h3>
@@ -184,7 +195,7 @@
       </div>
     </div>
     <div class="project-card">
-      <div class="card-top navy"><span class="card-icon">🌍</span><span class="card-tag">2024</span></div>
+      <div class="card-top"><img src="IMG_0363.png" alt="Fanarenana"><span class="card-tag">2024</span></div>
       <div class="card-body">
         <p class="card-org">Association Fanarenana — Madagascar</p>
         <h3 class="card-title">Refonte web & stratégie de communication</h3>
@@ -195,17 +206,17 @@
         <div style="position:relative;">
           <button class="card-carousel-btn prev" onclick="scrollCardCarousel('c3', -1)">&#8249;</button>
           <div class="carousel-track" id="c3">
-            <div class="card-carousel-slide"><img src="IMG_0363.png" alt="Fanarenana slide 1"></div>
-            <div class="card-carousel-slide"><img src="IMG_0364.png" alt="Fanarenana slide 2"></div>
-            <div class="card-carousel-slide"><img src="IMG_0365.png" alt="Fanarenana slide 3"></div>
-            <div class="card-carousel-slide"><img src="IMG_0366.png" alt="Fanarenana slide 4"></div>
-            <div class="card-carousel-slide"><img src="IMG_0367.png" alt="Fanarenana slide 5"></div>
-            <div class="card-carousel-slide"><img src="IMG_0368.png" alt="Fanarenana slide 6"></div>
-            <div class="card-carousel-slide"><img src="IMG_0369.png" alt="Fanarenana slide 7"></div>
-            <div class="card-carousel-slide"><img src="IMG_0370.png" alt="Fanarenana slide 8"></div>
-            <div class="card-carousel-slide"><img src="IMG_0371.png" alt="Fanarenana slide 9"></div>
-            <div class="card-carousel-slide"><img src="IMG_0372.png" alt="Fanarenana slide 10"></div>
-            <div class="card-carousel-slide"><img src="IMG_0373.png" alt="Fanarenana slide 11"></div>
+            <div class="card-carousel-slide"><img src="IMG_0363.png" alt="Fanarenana slide 1" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0364.png" alt="Fanarenana slide 2" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0365.png" alt="Fanarenana slide 3" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0366.png" alt="Fanarenana slide 4" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0367.png" alt="Fanarenana slide 5" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0368.png" alt="Fanarenana slide 6" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0369.png" alt="Fanarenana slide 7" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0370.png" alt="Fanarenana slide 8" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0371.png" alt="Fanarenana slide 9" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0372.png" alt="Fanarenana slide 10" onclick="openLightbox(this)"></div>
+            <div class="card-carousel-slide"><img src="IMG_0373.png" alt="Fanarenana slide 11" onclick="openLightbox(this)"></div>
           </div>
           <button class="card-carousel-btn next" onclick="scrollCardCarousel('c3', 1)">&#8250;</button>
         </div>
@@ -213,6 +224,7 @@
     </div>
   </div>
 </section>
+
 <section id="visuels">
   <p class="section-label">Création graphique</p>
   <h2 class="section-title" style="color:var(--cream)">Visuels &<br>productions</h2>
@@ -223,14 +235,14 @@
     <div class="carousel-wrapper">
       <button class="carousel-btn prev" onclick="scrollCarousel('c1', -1)">&#8249;</button>
       <div class="carousel-track" id="c1">
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 1.png" alt="Esclavage slide 1"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 2.png" alt="Esclavage slide 2"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 3.png" alt="Esclavage slide 3"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 4.png" alt="Esclavage slide 4"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 5.png" alt="Esclavage slide 5"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 6.png" alt="Esclavage slide 6"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 7.png" alt="Esclavage slide 7"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 8.png" alt="Esclavage slide 8"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 1.png" alt="Esclavage slide 1" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 2.png" alt="Esclavage slide 2" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 3.png" alt="Esclavage slide 3" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 4.png" alt="Esclavage slide 4" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 5.png" alt="Esclavage slide 5" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 6.png" alt="Esclavage slide 6" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 7.png" alt="Esclavage slide 7" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 8.png" alt="Esclavage slide 8" onclick="openLightbox(this)"></div>
       </div>
       <button class="carousel-btn next" onclick="scrollCarousel('c1', 1)">&#8250;</button>
     </div>
@@ -241,38 +253,39 @@
     <div class="carousel-wrapper">
       <button class="carousel-btn prev" onclick="scrollCarousel('c2', -1)">&#8249;</button>
       <div class="carousel-track" id="c2">
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 1.png" alt="Visibilité lesbienne slide 1"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 2.png" alt="Visibilité lesbienne slide 2"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 3.png" alt="Visibilité lesbienne slide 3"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 4.png" alt="Visibilité lesbienne slide 4"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 5.png" alt="Visibilité lesbienne slide 5"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 6.png" alt="Visibilité lesbienne slide 6"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 7.png" alt="Visibilité lesbienne slide 7"></div>
-        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 8.png" alt="Visibilité lesbienne slide 8"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 1.png" alt="Visibilité lesbienne slide 1" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 2.png" alt="Visibilité lesbienne slide 2" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 3.png" alt="Visibilité lesbienne slide 3" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 4.png" alt="Visibilité lesbienne slide 4" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 5.png" alt="Visibilité lesbienne slide 5" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 6.png" alt="Visibilité lesbienne slide 6" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 7.png" alt="Visibilité lesbienne slide 7" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 8.png" alt="Visibilité lesbienne slide 8" onclick="openLightbox(this)"></div>
       </div>
       <button class="carousel-btn next" onclick="scrollCarousel('c2', 1)">&#8250;</button>
     </div>
   </div>
   <p class="carousel-label" style="margin-top:3rem">Affiches & visuels événementiels</p>
   <div class="gallery-grid">
-    <div class="gallery-item"><img src="after manif.png" alt="Aftermanif"></div>
-    <div class="gallery-item"><img src="Apéro benevole - 1.png" alt="Apéro bénévole 1"></div>
-    <div class="gallery-item"><img src="Apéro benevole - 11.png" alt="Apéro bénévole 2"></div>
-    <div class="gallery-item"><img src="IMG_0324.png" alt="Apéro bénévole 3"></div>
-    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro bénévole 4"></div>
-    <div class="gallery-item"><img src="IMG_0267.png" alt="Crochet tricot 1"></div>
-    <div class="gallery-item"><img src="IMG_0268.png" alt="Crochet tricot 2"></div>
-    <div class="gallery-item"><img src="IMG_0269.png" alt="Crochet tricot 3"></div>
-    <div class="gallery-item"><img src="IMG_0270.png" alt="Crochet tricot 4"></div>
-    <div class="gallery-item"><img src="karaoké - 1.png" alt="Karaoké 1"></div>
-    <div class="gallery-item"><img src="IMG_0275.png" alt="Karaoké 2"></div>
-    <div class="gallery-item"><img src="IMG_0276.png" alt="Karaoké 3"></div>
-    <div class="gallery-item"><img src="video game night - 4.png" alt="Video game night"></div>
-    <div class="gallery-item"><img src="speed queering.png" alt="Speed queering"></div>
-    <div class="gallery-item"><img src="open platines - 1.png" alt="Open platines 1"></div>
-    <div class="gallery-item"><img src="open platines - 2.png" alt="Open platines 2"></div>
+    <div class="gallery-item"><img src="after manif.png" alt="Aftermanif" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="Apéro benevole - 1.png" alt="Apéro bénévole 1" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="Apéro benevole - 11.png" alt="Apéro bénévole 2" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro bénévole 3" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0267.png" alt="Crochet tricot 1" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0268.png" alt="Crochet tricot 2" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0269.png" alt="Crochet tricot 3" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0270.png" alt="Crochet tricot 4" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="karaoké - 1.png" alt="Karaoké 1" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0275.png" alt="Karaoké 2" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="IMG_0276.png" alt="Karaoké 3" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="video game night - 4.png" alt="Video game night" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="speed queering.png" alt="Speed queering" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="open platines - 1.png" alt="Open platines 1" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="open platines - 2.png" alt="Open platines 2" onclick="openLightbox(this)"></div>
+    <div class="gallery-item"><img src="open platines - 6.png" alt="Open platines 3" onclick="openLightbox(this)"></div>
   </div>
 </section>
+
 <section id="profil">
   <p class="section-label">À propos</p>
   <h2 class="section-title">Parcours &<br>compétences</h2>
@@ -290,6 +303,7 @@
     </div>
   </div>
 </section>
+
 <section id="cv">
   <p class="section-label">Curriculum Vitae</p>
   <h2 class="section-title">Parcours complet</h2>
@@ -381,6 +395,7 @@
     </div>
   </div>
 </section>
+
 <section id="contact">
   <p class="section-label">Contact</p>
   <h2 class="contact-title">Travaillons<br><em>ensemble</em></h2>
@@ -388,11 +403,24 @@
   <a href="mailto:sia.sablon@outlook.com" class="contact-email">sia.sablon@outlook.com</a><br>
   <a href="https://www.instagram.com/caferosalyon" target="_blank" class="btn btn-outline" style="border-color:rgba(245,240,232,0.3); color:var(--cream); margin-top:1rem;">Instagram Café Rosa</a>
 </section>
+
 <footer>
   <p>© 2026 Sia Sablon</p>
   <p>Villeurbanne · Lyon · Disponible à l'international</p>
 </footer>
+
 <script>
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('active');
+  event.stopPropagation();
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
 function scrollCarousel(id, dir) {
   const track = document.getElementById(id);
   const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 16;
