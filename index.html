@@ -63,6 +63,16 @@
   .gallery-item { aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; position: relative; background: rgba(245,240,232,0.05); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245,240,232,0.1); transition: transform 0.3s; cursor: pointer; }
   .gallery-item:hover { transform: scale(1.02); }
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .mini-carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .mini-carousel .mini-slides { display: flex; height: 100%; transition: transform 0.4s ease; }
+  .mini-carousel .mini-slide { flex: 0 0 100%; height: 100%; }
+  .mini-carousel .mini-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .mini-carousel .mini-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); border: none; color: white; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; z-index: 3; }
+  .mini-carousel .mini-btn.prev { left: 6px; }
+  .mini-carousel .mini-btn.next { right: 6px; }
+  .mini-carousel .mini-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 3; }
+  .mini-carousel .mini-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .mini-carousel .mini-dot.active { background: white; }
   .carousel-section { margin-bottom: 4rem; }
   .carousel-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); font-weight: 500; margin-bottom: 0.8rem; }
   .carousel-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.3; max-width: 600px; }
@@ -188,7 +198,7 @@
   <h2 class="section-title">Projets &<br>réalisations</h2>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="card-top"><img src="Café_logo.png" alt="Café Rosa"></div>
+      <div class="card-top"><img src="IMG_0376.jpeg" alt="Café Rosa"></div>
       <div class="card-body">
         <p class="card-org">Café Rosa — Lyon</p>
         <h3 class="card-title">Communication digitale & éditoriale</h3>
@@ -270,13 +280,27 @@
   <p class="carousel-label" style="margin-top:3rem">Affiches & visuels événementiels</p>
   <div class="gallery-grid">
     <div class="gallery-item"><img src="after manif.png" alt="Aftermanif" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item"><img src="Apero_bene1.png" alt="Apéro bénévole 1" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro bénévole 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="Apéro benevole - 1.png" alt="Apéro 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item">
+      <div class="mini-carousel" id="mini-pancartes">
+        <div class="mini-slides">
+          <div class="mini-slide"><img src="atelier pancartes - 1.png" alt="Pancartes 1" onclick="openMini('mini-pancartes')"></div>
+          <div class="mini-slide"><img src="IMG_0350.png" alt="Pancartes 2" onclick="openMini('mini-pancartes')"></div>
+        </div>
+        <button class="mini-btn prev" onclick="miniNav('mini-pancartes', -1); event.stopPropagation();">&#8249;</button>
+        <button class="mini-btn next" onclick="miniNav('mini-pancartes', 1); event.stopPropagation();">&#8250;</button>
+        <div class="mini-dots">
+          <div class="mini-dot active"></div>
+          <div class="mini-dot"></div>
+        </div>
+      </div>
+    </div>
     <div class="gallery-item"><img src="IMG_0267.png" alt="Crochet 1" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0268.png" alt="Crochet 2" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0269.png" alt="Crochet 3" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0270.png" alt="Crochet 4" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item"><img src="karaoqueer_1.png" alt="Karaoké 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="karaoké - 1.png" alt="Karaoké 1" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0275.png" alt="Karaoké 2" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0276.png" alt="Karaoké 3" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="video game night - 4.png" alt="Video game" onclick="openLightbox(this, 'gallery')"></div>
@@ -408,39 +432,68 @@
 <script>
 let currentGroup = [];
 let currentIndex = 0;
+let miniStates = {};
+
 function openLightbox(img, group) {
   let selector;
   if (group === 'mars') selector = '#c1 img';
   else if (group === 'avril') selector = '#c2 img';
   else if (group === 'fanarenana') selector = '#c3 img';
-  else selector = '.gallery-item img';
+  else selector = '.gallery-item > img';
   currentGroup = Array.from(document.querySelectorAll(selector));
   currentIndex = currentGroup.indexOf(img);
   updateLightbox();
   document.getElementById('lightbox').classList.add('active');
   event.stopPropagation();
 }
+
+function openMini(id) {
+  const mini = document.getElementById(id);
+  currentGroup = Array.from(mini.querySelectorAll('.mini-slide img'));
+  currentIndex = miniStates[id] || 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  event.stopPropagation();
+}
+
+function miniNav(id, dir) {
+  const mini = document.getElementById(id);
+  const slides = mini.querySelector('.mini-slides');
+  const dots = mini.querySelectorAll('.mini-dot');
+  const count = mini.querySelectorAll('.mini-slide').length;
+  let idx = miniStates[id] || 0;
+  idx = (idx + dir + count) % count;
+  miniStates[id] = idx;
+  slides.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
 function updateLightbox() {
   document.getElementById('lightbox-img').src = currentGroup[currentIndex].src;
   document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentGroup.length;
 }
+
 function navLightbox(dir) {
   currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length;
   updateLightbox();
   event.stopPropagation();
 }
+
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
 }
+
 document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target.id === 'lightbox') closeLightbox();
 });
+
 document.addEventListener('keydown', function(e) {
   if (!document.getElementById('lightbox').classList.contains('active')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length; updateLightbox(); }
   if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % currentGroup.length; updateLightbox(); }
 });
+
 function scrollCarousel(id, dir) {
   const track = document.getElementById(id);
   const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 16;
