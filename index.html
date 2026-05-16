@@ -69,6 +69,26 @@
   .gallery-placeholder .icon { font-size: 2rem; margin-bottom: 0.5rem; }
   .gallery-placeholder p { font-size: 0.75rem; line-height: 1.5; }
   .gallery-add-note { margin-top: 1.5rem; font-size: 0.8rem; color: rgba(245,240,232,0.35); font-style: italic; }
+  .carousel-section { margin-bottom: 4rem; }
+  .carousel-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); font-weight: 500; margin-bottom: 0.8rem; }
+  .carousel-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.3; max-width: 600px; }
+  .carousel-wrapper { position: relative; }
+  .carousel-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-slide { flex: 0 0 calc(33.333% - 0.67rem); scroll-snap-align: start; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.1); display: flex; align-items: center; justify-content: center; }
+  .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .carousel-slide .gallery-placeholder { color: rgba(245,240,232,0.3); text-align: center; padding: 1rem; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,240,232,0.1); border: 1px solid rgba(245,240,232,0.2); color: var(--cream); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; backdrop-filter: blur(4px); z-index: 2; }
+  .carousel-btn:hover { background: rgba(245,240,232,0.25); }
+  .carousel-btn.prev { left: -20px; }
+  .carousel-btn.next { right: -20px; }
+  .card-carousel-slide { flex: 0 0 calc(50% - 0.5rem); scroll-snap-align: start; aspect-ratio: 16/9; border-radius: 3px; overflow: hidden; background: #e8e8e8; display: flex; align-items: center; justify-content: center; }
+  .card-carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .ccs-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; width:100%; height:100%; color: #aaa; font-size: 0.7rem; gap: 0.3rem; }
+  .ccs-ph span { font-size: 1.4rem; }
+  .card-carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26,31,58,0.12); border: 1px solid rgba(26,31,58,0.15); color: var(--navy); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  .card-carousel-btn.prev { left: -14px; }
+  .card-carousel-btn.next { right: -14px; }
   #profil { background: var(--cream); }
   .profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .profil-text p { font-size: 0.95rem; line-height: 1.9; color: var(--text); opacity: 0.8; margin-bottom: 1.2rem; }
@@ -76,20 +96,6 @@
   .skill-block { background: white; padding: 1.2rem 1.5rem; border-radius: 4px; border-left: 3px solid var(--rose); box-shadow: 0 2px 8px rgba(26,31,58,0.05); }
   .skill-block h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.6rem; }
   .skill-block p { font-size: 0.85rem; line-height: 1.6; color: var(--text); opacity: 0.75; }
-  #contact { background: var(--navy); text-align: center; padding: 5rem 4rem; }
-  #contact .section-label { color: var(--warm); }
-  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; color: var(--cream); margin-bottom: 1rem; line-height: 1.1; }
-  .contact-title em { font-style: italic; color: var(--rose); }
-  .contact-sub { font-size: 0.95rem; color: rgba(245,240,232,0.55); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-  .contact-email { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.3); padding-bottom: 0.2rem; transition: border-color 0.2s; display: inline-block; margin-bottom: 2rem; }
-  .contact-email:hover { border-color: var(--rose); color: var(--rose); }
-  footer { background: var(--navy); border-top: 1px solid rgba(245,240,232,0.08); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
-  footer p { font-size: 0.75rem; color: rgba(245,240,232,0.3); letter-spacing: 0.05em; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-left > * { animation: fadeUp 0.6s ease both; }
-  .hero-left > *:nth-child(1) { animation-delay: 0.1s; } .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
-  .hero-left > *:nth-child(3) { animation-delay: 0.3s; } .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
-  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
   #cv { background: var(--light); }
   .cv-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
   .cv-block { margin-bottom: 2.5rem; }
@@ -107,6 +113,20 @@
   .cv-skill-row { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.8rem 1rem; background: white; border-left: 3px solid var(--rose); border-radius: 2px; }
   .cv-skill-cat { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); font-weight: 500; }
   .cv-skill-val { font-size: 0.83rem; color: var(--text); opacity: 0.75; }
+  #contact { background: var(--navy); text-align: center; padding: 5rem 4rem; }
+  #contact .section-label { color: var(--warm); }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; color: var(--cream); margin-bottom: 1rem; line-height: 1.1; }
+  .contact-title em { font-style: italic; color: var(--rose); }
+  .contact-sub { font-size: 0.95rem; color: rgba(245,240,232,0.55); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .contact-email { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.3); padding-bottom: 0.2rem; transition: border-color 0.2s; display: inline-block; margin-bottom: 2rem; }
+  .contact-email:hover { border-color: var(--rose); color: var(--rose); }
+  footer { background: var(--navy); border-top: 1px solid rgba(245,240,232,0.08); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.75rem; color: rgba(245,240,232,0.3); letter-spacing: 0.05em; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-left > * { animation: fadeUp 0.6s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; } .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; } .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; } .hero-right { display: none; }
@@ -114,6 +134,8 @@
     .profil-grid { grid-template-columns: 1fr; gap: 2rem; } .skills-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .cv-grid { grid-template-columns: 1fr; }
+    .carousel-slide { flex: 0 0 calc(50% - 0.5rem); } .carousel-btn { display: none; }
+    .card-carousel-btn { display: none; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -170,9 +192,27 @@
       <div class="card-body">
         <p class="card-org">Association Fanarenana — Madagascar</p>
         <h3 class="card-title">Refonte web & stratégie de communication</h3>
-        <p class="card-desc">Refonte intégrale du site web (WordPress/Elementor, trilingue), diagnostic communication, stratégie globale, captation photo/vidéo, montage documentaire, événement des 20 ans.</p>
+        <p class="card-desc">Refonte intégrale du site web (WordPress/Elementor, trilingue FR/MG/EN), diagnostic communication, stratégie globale, captation photo/vidéo, montage documentaire, événement des 20 ans.</p>
         <div class="card-tags"><span class="tag">WordPress</span><span class="tag">Stratégie com'</span><span class="tag">Captation vidéo</span><span class="tag">Événementiel</span></div>
-        <a href="https://associationfanarenana.org" target="_blank" class="card-link">Voir le site →</a>
+        <a href="https://associationfanarenana.org" target="_blank" class="card-link" style="margin-bottom:1.2rem; display:inline-flex;">Voir le site →</a>
+        <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:#C4556A; font-weight:500; margin-bottom:0.8rem;">Présentation de l'association</p>
+        <div style="position:relative;">
+          <button class="card-carousel-btn prev" onclick="scrollCardCarousel('c3', -1)">&#8249;</button>
+          <div class="carousel-track" id="c3">
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 1</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 2</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 3</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 4</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 5</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 6</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 7</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 8</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 9</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 10</p></div></div>
+            <div class="card-carousel-slide"><div class="ccs-ph"><span>🖼️</span><p>Slide 11</p></div></div>
+          </div>
+          <button class="card-carousel-btn next" onclick="scrollCardCarousel('c3', 1)">&#8250;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -180,20 +220,60 @@
 <section id="visuels">
   <p class="section-label">Création graphique</p>
   <h2 class="section-title" style="color:var(--cream)">Visuels &<br>productions</h2>
-  <p class="gallery-intro">Affiches événementielles, carrousels Instagram, contenus éditoriaux — produits pour le Café Rosa (Lyon).</p>
+  <p class="gallery-intro">Carrousels militants, affiches événementielles, contenus éditoriaux — produits pour le Café Rosa (Lyon).</p>
+  <div class="carousel-section">
+    <p class="carousel-label">Calendrier Militant — 1/2</p>
+    <h3 class="carousel-title">Journée Internationale de Commémoration des Victimes de l'Esclavage & de la Traite Atlantique des Esclaves</h3>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="scrollCarousel('c1', -1)">&#8249;</button>
+      <div class="carousel-track" id="c1">
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 1</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 2</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 3</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 4</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 5</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 6</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">✊</div><p>Slide 7</p></div></div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel('c1', 1)">&#8250;</button>
+    </div>
+  </div>
+  <div class="carousel-section">
+    <p class="carousel-label">Calendrier Militant — 2/2</p>
+    <h3 class="carousel-title">Journée de Visibilité des Lesbiennes</h3>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="scrollCarousel('c2', -1)">&#8249;</button>
+      <div class="carousel-track" id="c2">
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 1</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 2</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 3</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 4</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 5</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 6</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 7</p></div></div>
+        <div class="carousel-slide"><div class="gallery-placeholder"><div class="icon">💜</div><p>Slide 8</p></div></div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel('c2', 1)">&#8250;</button>
+    </div>
+  </div>
+  <p class="carousel-label" style="margin-top:3rem">Affiches & visuels événementiels</p>
   <div class="gallery-grid">
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🗓️</div><p>Calendrier Militant<br>Visibilité Lesbienne</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎤</div><p>Affiche<br>KaraoQueer</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎮</div><p>Affiche<br>Soirée Jeux Vidéos</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">✊</div><p>Affiche<br>Aftermanif</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">💜</div><p>Affiche<br>Speed Queering</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎵</div><p>Affiche<br>Open Platines</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
-    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel<br>à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎤</div><p>KaraoQueer</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎮</div><p>Soirée Jeux Vidéos</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">✊</div><p>Aftermanif</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">💜</div><p>Speed Queering</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🎵</div><p>Open Platines</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder"><div class="icon">🌹</div><p>Visuel à ajouter</p></div></div>
   </div>
   <p class="gallery-add-note">→ Pour ajouter les vraies images : remplacer chaque div gallery-placeholder par img src="nom-du-fichier.jpg"</p>
 </section>
@@ -316,5 +396,17 @@
   <p>© 2026 Sia Sablon</p>
   <p>Villeurbanne · Lyon · Disponible à l'international</p>
 </footer>
+<script>
+function scrollCarousel(id, dir) {
+  const track = document.getElementById(id);
+  const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 16;
+  track.scrollBy({ left: dir * slideWidth * 3, behavior: 'smooth' });
+}
+function scrollCardCarousel(id, dir) {
+  const track = document.getElementById(id);
+  const slideWidth = track.querySelector('.card-carousel-slide').offsetWidth + 16;
+  track.scrollBy({ left: dir * slideWidth * 2, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
