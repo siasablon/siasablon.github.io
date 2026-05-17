@@ -70,4 +70,439 @@
   .mini-carousel .mini-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); border: none; color: white; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; z-index: 3; }
   .mini-carousel .mini-btn.prev { left: 6px; }
   .mini-carousel .mini-btn.next { right: 6px; }
-  .mini-carousel .mini-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex;​​​​​​​​​​​​​​​​
+  .mini-carousel .mini-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 3; }
+  .mini-carousel .mini-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .mini-carousel .mini-dot.active { background: white; }
+  .carousel-section { margin-bottom: 4rem; }
+  .carousel-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); font-weight: 500; margin-bottom: 0.8rem; }
+  .carousel-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.3; max-width: 600px; }
+  .carousel-wrapper { position: relative; }
+  .carousel-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: none; }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-slide { flex: 0 0 calc(33.333% - 0.67rem); scroll-snap-align: start; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: rgba(245,240,232,0.05); border: 1px solid rgba(245,240,232,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,240,232,0.1); border: 1px solid rgba(245,240,232,0.2); color: var(--cream); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; backdrop-filter: blur(4px); z-index: 2; }
+  .carousel-btn:hover { background: rgba(245,240,232,0.25); }
+  .carousel-btn.prev { left: -20px; }
+  .carousel-btn.next { right: -20px; }
+  .card-carousel-slide { flex: 0 0 calc(50% - 0.5rem); scroll-snap-align: start; aspect-ratio: 16/9; border-radius: 3px; overflow: hidden; background: #e8e8e8; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .card-carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .card-carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26,31,58,0.12); border: 1px solid rgba(26,31,58,0.15); color: var(--navy); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  .card-carousel-btn.prev { left: -14px; }
+  .card-carousel-btn.next { right: -14px; }
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; opacity: 0.7; z-index: 1001; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 1001; }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.3); }
+  .lightbox-nav.prev { left: 2rem; }
+  .lightbox-nav.next { right: 2rem; }
+  .lightbox-counter { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.1em; }
+  #profil { background: var(--cream); }
+  .profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .profil-text p { font-size: 0.95rem; line-height: 1.9; color: var(--text); opacity: 0.8; margin-bottom: 1.2rem; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .skill-block { background: white; padding: 1.2rem 1.5rem; border-radius: 4px; border-left: 3px solid var(--rose); box-shadow: 0 2px 8px rgba(26,31,58,0.05); }
+  .skill-block h4 { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.6rem; }
+  .skill-block p { font-size: 0.85rem; line-height: 1.6; color: var(--text); opacity: 0.75; }
+  #cv { background: var(--light); }
+  .cv-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+  .cv-block { margin-bottom: 2.5rem; }
+  .cv-block-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); border-bottom: 2px solid var(--rose); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+  .cv-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(26,31,58,0.07); }
+  .cv-item:last-child { border-bottom: none; }
+  .cv-item-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+  .cv-item-org { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  .cv-item-date { font-size: 0.75rem; color: var(--rose); font-weight: 500; white-space: nowrap; }
+  .cv-item-role { font-size: 0.85rem; font-style: italic; color: var(--text); opacity: 0.7; margin-bottom: 0.6rem; }
+  .cv-item-bullets { list-style: none; padding: 0; }
+  .cv-item-bullets li { font-size: 0.83rem; line-height: 1.6; color: var(--text); opacity: 0.75; padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
+  .cv-item-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--rose); }
+  .cv-skills-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .cv-skill-row { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.8rem 1rem; background: white; border-left: 3px solid var(--rose); border-radius: 2px; }
+  .cv-skill-cat { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); font-weight: 500; }
+  .cv-skill-val { font-size: 0.83rem; color: var(--text); opacity: 0.75; }
+  #contact { background: var(--navy); text-align: center; padding: 5rem 4rem; }
+  #contact .section-label { color: var(--warm); }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; color: var(--cream); margin-bottom: 1rem; line-height: 1.1; }
+  .contact-title em { font-style: italic; color: var(--rose); }
+  .contact-sub { font-size: 0.95rem; color: rgba(245,240,232,0.55); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .contact-email { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.3); padding-bottom: 0.2rem; transition: border-color 0.2s; display: inline-block; margin-bottom: 2rem; }
+  .contact-email:hover { border-color: var(--rose); color: var(--rose); }
+  footer { background: var(--navy); border-top: 1px solid rgba(245,240,232,0.08); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.75rem; color: rgba(245,240,232,0.3); letter-spacing: 0.05em; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-left > * { animation: fadeUp 0.6s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; } .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; } .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; } .hero-right { display: none; }
+    .hero-left { padding: 5rem 1.5rem 3rem; } section { padding: 4rem 1.5rem; }
+    .profil-grid { grid-template-columns: 1fr; gap: 2rem; } .skills-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .cv-grid { grid-template-columns: 1fr; }
+    .carousel-slide { flex: 0 0 calc(50% - 0.5rem); } .carousel-btn { display: none; }
+    .card-carousel-btn { display: none; }
+    .lightbox-nav { width: 40px; height: 40px; font-size: 1.4rem; }
+    .lightbox-nav.prev { left: 0.5rem; } .lightbox-nav.next { right: 0.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav next" onclick="navLightbox(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+<nav>
+  <div class="nav-logo">Sia Sablon</div>
+  <ul class="nav-links">
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#visuels">Visuels</a></li>
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<section class="hero" id="accueil">
+  <div class="hero-left">
+    <p class="hero-tag">Portfolio — Communication engagée</p>
+    <h1 class="hero-name">Sia<br><em>Sablon</em></h1>
+    <p class="hero-title">Chargée de Communication Junior</p>
+    <p class="hero-desc">Communication associative, sociale et humanitaire. Je conçois des contenus qui donnent à voir, à comprendre et à agir — au service de structures engagées.</p>
+    <div class="hero-cta">
+      <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-monogram">SS</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Structures accompagnées</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">FR</div><div class="stat-label">English · Español</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">M2</div><div class="stat-label">Communication des Organisations · Lyon 2</div></div>
+    </div>
+  </div>
+</section>
+<section id="projets">
+  <p class="section-label">Expériences</p>
+  <h2 class="section-title">Projets &<br>réalisations</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="card-top"><img src="IMG_0376.jpeg" alt="Café Rosa"></div>
+      <div class="card-body">
+        <p class="card-org">Café Rosa — Lyon</p>
+        <h3 class="card-title">Communication digitale & éditoriale</h3>
+        <p class="card-desc">Pilotage autonome de la communication du café associatif : production de visuels événementiels, contenus éditoriaux militants, gestion de la ligne éditoriale Instagram.</p>
+        <div class="card-tags"><span class="tag">Instagram</span><span class="tag">Canva</span><span class="tag">Édito militant</span><span class="tag">Identité visuelle</span></div>
+        <a href="https://www.instagram.com/caferosalyon" target="_blank" class="card-link">Voir l'Instagram →</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="card-top"><img src="IMG_0363.png" alt="Fanarenana"><span class="card-tag">2024</span></div>
+      <div class="card-body">
+        <p class="card-org">Association Fanarenana — Madagascar</p>
+        <h3 class="card-title">Refonte web & stratégie de communication</h3>
+        <p class="card-desc">Refonte intégrale du site web (WordPress/Elementor, trilingue FR/MG/EN), diagnostic communication, stratégie globale, captation photo/vidéo, montage documentaire, événement des 20 ans.</p>
+        <div class="card-tags"><span class="tag">WordPress</span><span class="tag">Stratégie com'</span><span class="tag">Captation vidéo</span><span class="tag">Événementiel</span></div>
+        <a href="https://associationfanarenana.org" target="_blank" class="card-link" style="margin-bottom:1.2rem; display:inline-flex;">Voir le site →</a>
+        <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:#C4556A; font-weight:500; margin-bottom:0.8rem;">Présentation de l'association</p>
+        <div style="position:relative;">
+          <button class="card-carousel-btn prev" onclick="scrollCardCarousel('c3', -1)">&#8249;</button>
+          <div class="carousel-track" id="c3">
+            <div class="card-carousel-slide"><img src="IMG_0363.png" alt="Fanarenana 1" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0364.png" alt="Fanarenana 2" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0365.png" alt="Fanarenana 3" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0366.png" alt="Fanarenana 4" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0367.png" alt="Fanarenana 5" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0368.png" alt="Fanarenana 6" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0369.png" alt="Fanarenana 7" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0370.png" alt="Fanarenana 8" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0371.png" alt="Fanarenana 9" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0372.png" alt="Fanarenana 10" onclick="openLightbox(this, 'fanarenana')"></div>
+            <div class="card-carousel-slide"><img src="IMG_0373.png" alt="Fanarenana 11" onclick="openLightbox(this, 'fanarenana')"></div>
+          </div>
+          <button class="card-carousel-btn next" onclick="scrollCardCarousel('c3', 1)">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="visuels">
+  <p class="section-label">Création graphique</p>
+  <h2 class="section-title" style="color:var(--cream)">Visuels &<br>productions</h2>
+  <p class="gallery-intro">Carrousels militants, affiches événementielles, contenus éditoriaux — produits pour le Café Rosa (Lyon).</p>
+  <div class="carousel-section">
+    <p class="carousel-label">Calendrier Militant — 1/2</p>
+    <h3 class="carousel-title">Journée Internationale de Commémoration des Victimes de l'Esclavage & de la Traite Atlantique des Esclaves</h3>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="scrollCarousel('c1', -1)">&#8249;</button>
+      <div class="carousel-track" id="c1">
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 1.png" alt="Esclavage 1" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 2.png" alt="Esclavage 2" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 3.png" alt="Esclavage 3" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 4.png" alt="Esclavage 4" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 5.png" alt="Esclavage 5" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 6.png" alt="Esclavage 6" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 7.png" alt="Esclavage 7" onclick="openLightbox(this, 'mars')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Mars - 8.png" alt="Esclavage 8" onclick="openLightbox(this, 'mars')"></div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel('c1', 1)">&#8250;</button>
+    </div>
+  </div>
+  <div class="carousel-section">
+    <p class="carousel-label">Calendrier Militant — 2/2</p>
+    <h3 class="carousel-title">Journée de Visibilité des Lesbiennes</h3>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="scrollCarousel('c2', -1)">&#8249;</button>
+      <div class="carousel-track" id="c2">
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 1.png" alt="Lesbienne 1" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 2.png" alt="Lesbienne 2" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 3.png" alt="Lesbienne 3" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 4.png" alt="Lesbienne 4" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 5.png" alt="Lesbienne 5" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 6.png" alt="Lesbienne 6" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 7.png" alt="Lesbienne 7" onclick="openLightbox(this, 'avril')"></div>
+        <div class="carousel-slide"><img src="Calendrier militant 25 Avril - 8.png" alt="Lesbienne 8" onclick="openLightbox(this, 'avril')"></div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel('c2', 1)">&#8250;</button>
+    </div>
+  </div>
+  <p class="carousel-label" style="margin-top:3rem">Affiches & visuels événementiels</p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="after manif.png" alt="Aftermanif" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="Apero1.png" alt="Apéro 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item">
+      <div class="mini-carousel" id="mini-pancartes">
+        <div class="mini-slides">
+          <div class="mini-slide"><img src="atelier pancartes - 1.png" alt="Pancartes 1" onclick="openMini('mini-pancartes')"></div>
+          <div class="mini-slide"><img src="IMG_0350.png" alt="Pancartes 2" onclick="openMini('mini-pancartes')"></div>
+        </div>
+        <button class="mini-btn prev" onclick="miniNav('mini-pancartes', -1); event.stopPropagation();">&#8249;</button>
+        <button class="mini-btn next" onclick="miniNav('mini-pancartes', 1); event.stopPropagation();">&#8250;</button>
+        <div class="mini-dots">
+          <div class="mini-dot active"></div>
+          <div class="mini-dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item"><img src="IMG_0267.png" alt="Crochet 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0269.png" alt="Crochet 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0270.png" alt="Crochet 3" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="karaoke1.png" alt="Karaoké 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0275.png" alt="Karaoké 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="IMG_0276.png" alt="Karaoké 3" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="video game night - 4.png" alt="Video game" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="speed queering.png" alt="Speed queering" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="open platines - 1.png" alt="Open platines 1" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="open platines - 2.png" alt="Open platines 2" onclick="openLightbox(this, 'gallery')"></div>
+    <div class="gallery-item"><img src="open platines - 6.png" alt="Open platines 3" onclick="openLightbox(this, 'gallery')"></div>
+  </div>
+</section>
+<section id="profil">
+  <p class="section-label">À propos</p>
+  <h2 class="section-title">Parcours &<br>compétences</h2>
+  <div class="profil-grid">
+    <div class="profil-text">
+      <p>Diplômée d'un Master Communication des Organisations (parcours Humanitaire & Solidarités, Université Lumière Lyon 2), je développe une communication engagée au service de structures associatives, sociales et culturelles.</p>
+      <p>Mon parcours associe une formation en sciences du langage à des expériences concrètes en ONG internationale, bénévolat actif et communication terrain.</p>
+      <p>Basée à Villeurbanne, ouverte à la mobilité (France et international).</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block"><h4>Création graphique</h4><p>Canva · Inkscape · Kdenlive · Suite Adobe (notions)</p></div>
+      <div class="skill-block"><h4>Web & digital</h4><p>WordPress · Elementor · Google Workspace · Pack Office</p></div>
+      <div class="skill-block"><h4>Réseaux sociaux</h4><p>Instagram · Facebook · Community management · Ligne éditoriale</p></div>
+      <div class="skill-block"><h4>Langues</h4><p>Français C2 · Anglais C1 · Espagnol A2+</p></div>
+    </div>
+  </div>
+</section>
+<section id="cv">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2 class="section-title">Parcours complet</h2>
+  <div class="cv-grid">
+    <div class="cv-col">
+      <div class="cv-block">
+        <h3 class="cv-block-title">Expériences professionnelles</h3>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Café Rosa — Lyon</span><span class="cv-item-date">jan. 2026 – aujourd'hui</span></div>
+          <div class="cv-item-role">Chargée de communication & bénévole</div>
+          <ul class="cv-item-bullets">
+            <li>Conception et production de l'ensemble des visuels événementiels (affiches, carrousels Instagram) — identités graphiques adaptées à chaque événement</li>
+            <li>Création de contenus éditoriaux militants à portée pédagogique : carrousels thématiques croisant recherche documentaire, vulgarisation et positionnement politique</li>
+            <li>Pilotage autonome de la ligne éditoriale digitale en cohérence avec les valeurs de l'association (féminisme intersectionnel, mixité choisie)</li>
+            <li>Bénévolat terrain (service bar) — engagement dans la vie quotidienne de la structure</li>
+          </ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Association Fanarenana — Madagascar</span><span class="cv-item-date">mars – juil. 2024</span></div>
+          <div class="cv-item-role">Stagiaire chargée de communication</div>
+          <ul class="cv-item-bullets">
+            <li>Refonte intégrale du site web en autonomie (WordPress/Elementor) — architecture, contenus FR/EN, coordination avec l'équipe locale pour la version malgache — associationfanarenana.org</li>
+            <li>Diagnostic communication et élaboration d'une stratégie globale présentée à la direction</li>
+            <li>Création de supports visuels adaptés aux familles bénéficiaires</li>
+            <li>Captation photo et vidéo des activités terrain ; montage d'un documentaire retraçant le fonctionnement de l'association</li>
+            <li>Animation d'ateliers avec les enfants bénéficiaires</li>
+            <li>Organisation complète de l'événement des 20 ans : démarchage des lieux, choix des activités, coordination logistique et communication</li>
+          </ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Aeria Welcome — Aéroport Lyon Saint-Exupéry</span><span class="cv-item-date">mai – juin 2026</span></div>
+          <div class="cv-item-role">Hôtesse d'accueil aéroportuaire (CDD)</div>
+          <ul class="cv-item-bullets">
+            <li>Accueil et orientation des passagers en environnement international</li>
+            <li>Application des procédures de sûreté aéroportuaire (habilitation 11.2.6.2)</li>
+            <li>Gestion des situations imprévues et des réclamations en temps réel</li>
+          </ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Burger King — Rouen</span><span class="cv-item-date">oct. 2023 – août 2024</span></div>
+          <div class="cv-item-role">Équipière polyvalente</div>
+          <ul class="cv-item-bullets">
+            <li>Accueil et gestion des réclamations clients en environnement à fort flux</li>
+            <li>Formation et intégration de nouveaux employés</li>
+          </ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Boulangerie Luval — Rouen</span><span class="cv-item-date">août 2022 – oct. 2023</span></div>
+          <div class="cv-item-role">Vendeuse – Préparatrice</div>
+          <ul class="cv-item-bullets">
+            <li>Relation clientèle, création d'affiches de communication, rapports de CA journaliers</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-block">
+        <h3 class="cv-block-title">Bénévolat</h3>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Nightline Lyon</span><span class="cv-item-date">depuis sept. 2025</span></div>
+          <div class="cv-item-role">Animatrice — Fresque de la Santé Mentale</div>
+          <ul class="cv-item-bullets">
+            <li>Animation d'ateliers de sensibilisation à la santé mentale auprès d'étudiants</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cv-col">
+      <div class="cv-block">
+        <h3 class="cv-block-title">Formation</h3>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">Université Lumière Lyon 2 — ICOM</span><span class="cv-item-date">2023 – 2025</span></div>
+          <div class="cv-item-role">Master Communication des Organisations</div>
+          <ul class="cv-item-bullets"><li>Parcours Communication, Humanitaire & Solidarités</li></ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header"><span class="cv-item-org">UFR Normandie</span><span class="cv-item-date">2020 – 2023</span></div>
+          <div class="cv-item-role">Licence Sciences du Langage</div>
+          <ul class="cv-item-bullets"><li>Parcours Linguistique Théorique Appliquée</li></ul>
+        </div>
+      </div>
+      <div class="cv-block">
+        <h3 class="cv-block-title">Compétences</h3>
+        <div class="cv-skills-list">
+          <div class="cv-skill-row"><span class="cv-skill-cat">Création graphique</span><span class="cv-skill-val">Canva · Inkscape · Kdenlive · Suite Adobe (notions)</span></div>
+          <div class="cv-skill-row"><span class="cv-skill-cat">Web & digital</span><span class="cv-skill-val">WordPress · Elementor · Google Workspace · Pack Office</span></div>
+          <div class="cv-skill-row"><span class="cv-skill-cat">Réseaux sociaux</span><span class="cv-skill-val">Instagram · Facebook · Community management</span></div>
+          <div class="cv-skill-row"><span class="cv-skill-cat">Langues</span><span class="cv-skill-val">Français C2 · Anglais C1 · Espagnol A2+</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="contact-title">Travaillons<br><em>ensemble</em></h2>
+  <p class="contact-sub">Disponible pour un poste de chargée de communication dans le secteur associatif, social ou culturel. Ouverte aux opportunités en France et à l'international.</p>
+  <a href="mailto:sia.sablon@outlook.com" class="contact-email">sia.sablon@outlook.com</a><br>
+  <a href="https://www.instagram.com/caferosalyon" target="_blank" class="btn btn-outline" style="border-color:rgba(245,240,232,0.3); color:var(--cream); margin-top:1rem;">Instagram Café Rosa</a>
+</section>
+<footer>
+  <p>© 2026 Sia Sablon</p>
+  <p>Villeurbanne · Lyon · Disponible à l'international</p>
+</footer>
+<script>
+let currentGroup = [];
+let currentIndex = 0;
+let miniStates = {};
+
+function openLightbox(img, group) {
+  let selector;
+  if (group === 'mars') selector = '#c1 img';
+  else if (group === 'avril') selector = '#c2 img';
+  else if (group === 'fanarenana') selector = '#c3 img';
+  else selector = '.gallery-item > img';
+  currentGroup = Array.from(document.querySelectorAll(selector));
+  currentIndex = currentGroup.indexOf(img);
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  event.stopPropagation();
+}
+
+function openMini(id) {
+  const mini = document.getElementById(id);
+  currentGroup = Array.from(mini.querySelectorAll('.mini-slide img'));
+  currentIndex = miniStates[id] || 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  event.stopPropagation();
+}
+
+function miniNav(id, dir) {
+  const mini = document.getElementById(id);
+  const slides = mini.querySelector('.mini-slides');
+  const dots = mini.querySelectorAll('.mini-dot');
+  const count = mini.querySelectorAll('.mini-slide').length;
+  let idx = miniStates[id] || 0;
+  idx = (idx + dir + count) % count;
+  miniStates[id] = idx;
+  slides.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+function updateLightbox() {
+  document.getElementById('lightbox-img').src = currentGroup[currentIndex].src;
+  document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentGroup.length;
+}
+
+function navLightbox(dir) {
+  currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length;
+  updateLightbox();
+  event.stopPropagation();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length; updateLightbox(); }
+  if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % currentGroup.length; updateLightbox(); }
+});
+
+function scrollCarousel(id, dir) {
+  const track = document.getElementById(id);
+  const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 16;
+  track.scrollBy({ left: dir * slideWidth * 3, behavior: 'smooth' });
+}
+function scrollCardCarousel(id, dir) {
+  const track = document.getElementById(id);
+  const slideWidth = track.querySelector('.card-carousel-slide').offsetWidth + 16;
+  track.scrollBy({ left: dir * slideWidth * 2, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
