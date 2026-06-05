@@ -37,6 +37,10 @@
   .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--cream); line-height: 1; }
   .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-top: 0.3rem; }
   .stat-divider { width: 1px; height: 40px; background: rgba(245,240,232,0.15); margin: 0 auto; }
+  .lang-grid { display: flex; flex-direction: column; gap: 0.4rem; z-index: 1; }
+  .lang-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .lang-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); }
+  .lang-level { font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(245,240,232,0.5); text-transform: uppercase; }
   section { padding: 6rem 4rem; }
   .section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.8rem; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--navy); line-height: 1.15; margin-bottom: 3rem; }
@@ -185,11 +189,33 @@
   <div class="hero-right">
     <div class="hero-monogram">SS</div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Structures accompagnées</div></div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Structures accompagnées</div>
+      </div>
       <div class="stat-divider"></div>
-      <div class="stat"><div class="stat-num">FR</div><div class="stat-label">English · Español</div></div>
+      <div class="stat">
+        <div class="stat-num" style="font-size:1.1rem; line-height:1.4;">Master Communication<br>des Organisations</div>
+        <div class="stat-label">Université Lyon 2</div>
+      </div>
       <div class="stat-divider"></div>
-      <div class="stat"><div class="stat-num">M2</div><div class="stat-label">Communication des Organisations · Lyon 2</div></div>
+      <div class="stat">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:1.5rem;">
+            <span style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--cream);">Français</span>
+            <span style="font-size:0.7rem; letter-spacing:0.1em; color:var(--rose); font-weight:600;">C2</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:1.5rem;">
+            <span style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--cream);">English</span>
+            <span style="font-size:0.7rem; letter-spacing:0.1em; color:var(--rose); font-weight:600;">C1</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:1.5rem;">
+            <span style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--cream);">Español</span>
+            <span style="font-size:0.7rem; letter-spacing:0.1em; color:var(--rose); font-weight:600;">A2+</span>
+          </div>
+        </div>
+        <div class="stat-label" style="margin-top:0.5rem;">Langues</div>
+      </div>
     </div>
   </div>
 </section>
@@ -261,7 +287,7 @@
   </div>
   <div class="carousel-section">
     <p class="carousel-label">Calendrier Militant — 2/2</p>
-    <h3 class="carousel-title">Journée de Visibilité des Lesbiennes</h3>
+    <h3 class="carousel-title">Journée de Visibilité Lesbienne</h3>
     <div class="carousel-wrapper">
       <button class="carousel-btn prev" onclick="scrollCarousel('c2', -1)">&#8249;</button>
       <div class="carousel-track" id="c2">
@@ -281,21 +307,7 @@
   <div class="gallery-grid">
     <div class="gallery-item"><img src="after manif.png" alt="Aftermanif" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="Apero1.png" alt="Apéro 1" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item"><img src="IMG_0327.png" alt="Apéro 2" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item">
-      <div class="mini-carousel" id="mini-pancartes">
-        <div class="mini-slides">
-          <div class="mini-slide"><img src="atelier pancartes - 1.png" alt="Pancartes 1" onclick="openMini('mini-pancartes')"></div>
-          <div class="mini-slide"><img src="IMG_0350.png" alt="Pancartes 2" onclick="openMini('mini-pancartes')"></div>
-        </div>
-        <button class="mini-btn prev" onclick="miniNav('mini-pancartes', -1); event.stopPropagation();">&#8249;</button>
-        <button class="mini-btn next" onclick="miniNav('mini-pancartes', 1); event.stopPropagation();">&#8250;</button>
-        <div class="mini-dots">
-          <div class="mini-dot active"></div>
-          <div class="mini-dot"></div>
-        </div>
-      </div>
-    </div>
+    <div class="gallery-item"><img src="atelier pancartes - 1.png" alt="Atelier pancartes" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0267.png" alt="Crochet 1" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0269.png" alt="Crochet 2" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0270.png" alt="Crochet 3" onclick="openLightbox(this, 'gallery')"></div>
@@ -303,7 +315,6 @@
     <div class="gallery-item"><img src="IMG_0275.png" alt="Karaoké 2" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="IMG_0276.png" alt="Karaoké 3" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="video game night - 4.png" alt="Video game" onclick="openLightbox(this, 'gallery')"></div>
-    <div class="gallery-item"><img src="speed queering.png" alt="Speed queering" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="open platines - 1.png" alt="Open platines 1" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="open platines - 2.png" alt="Open platines 2" onclick="openLightbox(this, 'gallery')"></div>
     <div class="gallery-item"><img src="open platines - 6.png" alt="Open platines 3" onclick="openLightbox(this, 'gallery')"></div>
@@ -347,7 +358,7 @@
           <div class="cv-item-header"><span class="cv-item-org">Association Fanarenana — Madagascar</span><span class="cv-item-date">mars – juil. 2024</span></div>
           <div class="cv-item-role">Stagiaire chargée de communication</div>
           <ul class="cv-item-bullets">
-            <li>Refonte intégrale du site web en autonomie (WordPress/Elementor) — architecture, contenus FR/EN, coordination avec l'équipe locale pour la version malgache — associationfanarenana.org</li>
+            <li>Refonte intégrale du site web en autonomie (WordPress/Elementor) — architecture, contenus FR/EN, coordination avec l'équipe locale pour la version malgache</li>
             <li>Diagnostic communication et élaboration d'une stratégie globale présentée à la direction</li>
             <li>Création de supports visuels adaptés aux familles bénéficiaires</li>
             <li>Captation photo et vidéo des activités terrain ; montage d'un documentaire retraçant le fonctionnement de l'association</li>
@@ -368,15 +379,16 @@
           <div class="cv-item-header"><span class="cv-item-org">Burger King — Rouen</span><span class="cv-item-date">oct. 2023 – août 2024</span></div>
           <div class="cv-item-role">Équipière polyvalente</div>
           <ul class="cv-item-bullets">
-            <li>Accueil et gestion des réclamations clients en environnement à fort flux</li>
-            <li>Formation et intégration de nouveaux employés</li>
+            <li>Prise en charge de l'accueil, du service et des réclamations clients dans un environnement à fort flux, en maintenant un niveau de qualité constant</li>
+            <li>Formation et intégration des nouveaux employés, organisation et entretien des espaces de travail</li>
           </ul>
         </div>
         <div class="cv-item">
           <div class="cv-item-header"><span class="cv-item-org">Boulangerie Luval — Rouen</span><span class="cv-item-date">août 2022 – oct. 2023</span></div>
           <div class="cv-item-role">Vendeuse – Préparatrice</div>
           <ul class="cv-item-bullets">
-            <li>Relation clientèle, création d'affiches de communication, rapports de CA journaliers</li>
+            <li>Gestion de la relation clientèle et présentation de la marque au quotidien, avec création d'affiches de communication et rédaction des rapports de CA journaliers</li>
+            <li>Mise en place d'un carnet d'échange interne au personnel et organisation des zones de travail pour fluidifier le fonctionnement de la boutique</li>
           </ul>
         </div>
       </div>
@@ -431,7 +443,6 @@
 <script>
 let currentGroup = [];
 let currentIndex = 0;
-let miniStates = {};
 
 function openLightbox(img, group) {
   let selector;
@@ -444,27 +455,6 @@ function openLightbox(img, group) {
   updateLightbox();
   document.getElementById('lightbox').classList.add('active');
   event.stopPropagation();
-}
-
-function openMini(id) {
-  const mini = document.getElementById(id);
-  currentGroup = Array.from(mini.querySelectorAll('.mini-slide img'));
-  currentIndex = miniStates[id] || 0;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
-  event.stopPropagation();
-}
-
-function miniNav(id, dir) {
-  const mini = document.getElementById(id);
-  const slides = mini.querySelector('.mini-slides');
-  const dots = mini.querySelectorAll('.mini-dot');
-  const count = mini.querySelectorAll('.mini-slide').length;
-  let idx = miniStates[id] || 0;
-  idx = (idx + dir + count) % count;
-  miniStates[id] = idx;
-  slides.style.transform = 'translateX(-' + (idx * 100) + '%)';
-  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 }
 
 function updateLightbox() {
